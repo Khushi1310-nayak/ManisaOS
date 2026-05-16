@@ -25,10 +25,10 @@ export function SkillsHero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6"
+          className="text-3xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6"
         >
           Skills That <br />
-          Build <span className="font-signature text-6xl md:text-8xl text-[#decba4] glowing-signature font-normal ml-2">Impact.</span>
+          Build <span className="font-signature text-5xl md:text-8xl text-[#decba4] glowing-signature font-normal ml-2">Impact.</span>
         </motion.h2>
 
         <motion.p

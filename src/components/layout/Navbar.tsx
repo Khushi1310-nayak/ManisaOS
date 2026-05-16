@@ -2,8 +2,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Home, User, Briefcase, Award, Mail, Sparkles } from "lucide-react";
+import { Home, User, Briefcase, Award, Mail, Sparkles, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "Home", icon: Home, id: "home" },
@@ -16,11 +17,21 @@ const navItems = [
 
 export function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -70% 0px", // Focus on the upper-middle of the viewport
+      rootMargin: "-20% 0px -70% 0px",
       threshold: 0,
     };
 
@@ -34,14 +45,13 @@ export function Navbar() {
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    // Observe all sections that have IDs matching our nav items
     navItems.forEach((item) => {
       const element = document.getElementById(item.id);
       if (element) observer.observe(element);
     });
 
     return () => observer.disconnect();
-  }, []); // Dependencies removed as navItems is now stable outside the component
+  }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -49,65 +59,113 @@ export function Navbar() {
     const checkModal = () => {
       setIsModalOpen(document.body.classList.contains("modal-open"));
     };
-
-    // Initial check
     checkModal();
-
-    // Observe body class changes
     const observer = new MutationObserver(checkModal);
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center max-w-7xl mx-auto w-full transition-all duration-500",
-      isModalOpen ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0"
+      "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
+      isModalOpen ? "opacity-0 -translate-y-full pointer-events-none" : "opacity-100 translate-y-0",
+      scrolled ? "py-3 bg-black/60 backdrop-blur-xl border-b border-white/5" : "py-6 bg-transparent"
     )}>
-      {/* Logo */}
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-sm font-light text-white/80">
-          MN
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center gap-3 relative z-[110]">
+          <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-sm font-light text-white/80 bg-black/40">
+            MN
+          </div>
+          <span className="font-medium text-lg tracking-wide text-white/90 hidden sm:block">
+            Manisa Nayak
+          </span>
         </div>
-        <span className="font-medium text-lg tracking-wide text-white/90">
-          Manisa Nayak
-        </span>
-      </div>
 
-      {/* Navigation */}
-      <nav className="hidden md:flex items-center justify-center gap-2 glass-panel rounded-full px-2 py-2">
-        {navItems.map((item) => (
-          <a
-            key={item.name}
-            href={`#${item.id}`}
-            onClick={(e) => {
-              // Smooth scroll fallback if needed
-              setActiveSection(item.id);
-            }}
-            className={cn(
-              "flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-300",
-              activeSection === item.id
-                ? "bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-white/10"
-                : "text-white/60 hover:text-white hover:bg-white/5"
-            )}
-          >
-            <item.icon className="w-4 h-4" />
-            <span>{item.name}</span>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center justify-center gap-1 glass-panel rounded-full px-2 py-1.5 border-white/10">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={`#${item.id}`}
+              onClick={() => setActiveSection(item.id)}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2 rounded-full text-xs transition-all duration-300",
+                activeSection === item.id
+                  ? "bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-white/10"
+                  : "text-white/60 hover:text-white hover:bg-white/5"
+              )}
+            >
+              <item.icon className="w-3.5 h-3.5" />
+              <span>{item.name}</span>
+            </a>
+          ))}
+        </nav>
+
+        {/* Right Actions & Mobile Toggle */}
+        <div className="flex items-center gap-4 relative z-[110]">
+          <a href="#contact" className="hidden sm:block">
+            <button className="glass-panel px-6 py-2 rounded-full flex items-center gap-2 text-white/90 hover:bg-white/10 transition-colors border border-white/10 group text-sm">
+              <span>Talk With Me</span>
+              <Sparkles className="w-4 h-4 text-[#decba4] group-hover:animate-pulse" />
+            </button>
           </a>
-        ))}
-      </nav>
-
-      {/* Right Actions */}
-      <div className="flex items-center gap-4">
-        <a href="#contact">
-          <button className="glass-panel px-6 py-2 rounded-full flex items-center gap-2 text-white/90 hover:bg-white/10 transition-colors border border-[var(--color-glass-border)] group">
-            <span>Talk With Me</span>
-            <Sparkles className="w-4 h-4 text-[#decba4] group-hover:animate-pulse" />
+          
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/80 bg-black/40 hover:bg-white/5 transition-colors"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
-        </a>
+        </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-2xl border-b border-white/10 overflow-hidden shadow-2xl"
+          >
+            <nav className="flex flex-col p-6 gap-2">
+              {navItems.map((item, idx) => (
+                <motion.a
+                  key={item.name}
+                  href={`#${item.id}`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  onClick={() => {
+                    setActiveSection(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-4 p-4 rounded-xl text-sm transition-all",
+                    activeSection === item.id
+                      ? "bg-[#decba4]/10 text-[#decba4] border border-[#decba4]/20"
+                      : "text-white/60 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  <item.icon className="w-5 h-5" />
+                  <span className="font-medium">{item.name}</span>
+                </motion.a>
+              ))}
+              <motion.a 
+                href="#contact"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-4 w-full py-4 rounded-xl bg-gradient-to-r from-[#3e5151] to-[#decba4] text-black font-bold text-center text-sm shadow-[0_0_20px_rgba(222,203,164,0.2)]"
+              >
+                Let&apos;s Talk Now
+              </motion.a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
-

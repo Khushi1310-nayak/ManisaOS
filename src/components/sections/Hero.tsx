@@ -47,10 +47,10 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-baseline gap-4 mb-4 flex-wrap"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
+            <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white">
               Hi, I&apos;m
             </h1>
-            <span className="font-signature text-6xl md:text-8xl text-[#decba4] glowing-signature leading-[0.5]">
+            <span className="font-signature text-5xl md:text-8xl text-[#decba4] glowing-signature leading-[0.5]">
               Manisa
             </span>
           </motion.div>

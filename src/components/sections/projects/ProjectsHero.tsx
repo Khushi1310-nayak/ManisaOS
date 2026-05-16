@@ -24,10 +24,10 @@ export function ProjectsHero() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8"
+        className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-8"
       >
         Projects. Solutions.<br />
-        <span className="font-signature text-7xl md:text-9xl text-[#decba4] glowing-signature inline-block mt-4">
+        <span className="font-signature text-6xl md:text-9xl text-[#decba4] glowing-signature inline-block mt-4">
           Impact.
         </span>
       </motion.h2>

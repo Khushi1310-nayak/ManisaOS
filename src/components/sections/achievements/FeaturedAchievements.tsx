@@ -269,18 +269,19 @@ export function FeaturedAchievements() {
         </div>
       </div>
 
-      <div className="w-full overflow-x-auto pb-10 hide-scrollbar snap-x snap-mandatory">
-        <div className="flex gap-6 w-max px-2">
+      <div className="w-full overflow-x-auto pb-10 hide-scrollbar snap-x snap-mandatory touch-pan-x">
+        <div className="flex gap-6 w-max px-6">
           {achievements.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="w-[320px] md:w-[380px] shrink-0 snap-start h-full"
+              className="w-[85vw] sm:w-[320px] md:w-[380px] shrink-0 snap-center h-full"
             >
-              <GlassCard className={`p-0 border ${item.borderColor} bg-gradient-to-br from-black to-[#050a0a] h-[520px] flex flex-col relative overflow-hidden group hover:shadow-[0_0_40px_rgba(222,203,164,0.05)] transition-all duration-500`}>
+              <GlassCard className={`p-0 border ${item.borderColor} bg-gradient-to-br from-black to-[#050a0a] h-[480px] md:h-[520px] flex flex-col relative overflow-hidden group hover:shadow-[0_0_40px_rgba(222,203,164,0.05)] transition-all duration-500`}>
+
                 
                 {/* Visual Header Area */}
                 <div className="h-64 relative border-b border-white/5 overflow-hidden">
