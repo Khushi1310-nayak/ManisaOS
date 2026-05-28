@@ -115,7 +115,7 @@ export function AvailabilityStatus() {
             {[
               { icon: <GithubIcon className="w-4 h-4" />, link: "https://github.com/Khushi1310-nayak" },
               { icon: <LinkedinIcon className="w-4 h-4" />, link: "https://www.linkedin.com/in/manisa-nayak-185bb5378/" },
-              { icon: <Mail className="w-4 h-4" />, link: "mailto:khushinayak127@gmail.com" }
+              { icon: <Mail className="w-4 h-4" />, link: "https://mail.google.com/mail/?view=cm&fs=1&to=khushinayak127@gmail.com" }
             ].map((social, idx) => (
               <motion.a
                 key={idx}

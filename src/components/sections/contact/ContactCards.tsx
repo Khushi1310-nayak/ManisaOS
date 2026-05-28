@@ -35,7 +35,7 @@ export function ContactCards() {
     {
       title: "Email",
       display: "khushinayak127@gmail.com",
-      link: "mailto:khushinayak127@gmail.com",
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=khushinayak127@gmail.com",
       icon: <Mail className="w-6 h-6" />
     }
   ];
@@ -46,7 +46,7 @@ export function ContactCards() {
         <motion.a
           key={card.title}
           href={card.link}
-          target={card.title === "Email" ? "_self" : "_blank"}
+          target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
