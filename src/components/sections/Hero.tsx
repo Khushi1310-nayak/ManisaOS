@@ -5,7 +5,6 @@ import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { TerminalPanel } from "@/components/ui/TerminalPanel";
 import { Centerpiece3D } from "@/components/effects/Centerpiece3D";
-import { StatsBar } from "@/components/layout/StatsBar";
 
 export function Hero() {
   return (
@@ -86,8 +85,8 @@ export function Hero() {
               </Button>
             </a>
             <a 
-              href="/resume/Manisa_Nayak_Resume1.pdf" 
-              download="Manisa_Nayak_Resume.pdf"
+              href="#" 
+              onClick={(e) => e.preventDefault()}
             >
               <Button variant="secondary">
                 Download Resume
@@ -119,7 +118,6 @@ export function Hero() {
           <TerminalPanel />
         </div>
       </div>
-      <StatsBar />
     </section>
   );
 }

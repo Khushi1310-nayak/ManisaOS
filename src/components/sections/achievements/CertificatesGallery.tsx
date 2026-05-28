@@ -1,13 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 
 export function CertificatesGallery() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const certificates = [
     { 
@@ -89,13 +89,7 @@ export function CertificatesGallery() {
     },
   ];
 
-  const scrollLeft = () => {
-    if (scrollRef.current) scrollRef.current.scrollBy({ left: -400, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) scrollRef.current.scrollBy({ left: 400, behavior: "smooth" });
-  };
+  const visibleCertificates = showAll ? certificates : certificates.slice(0, 6);
 
   return (
     <div className="w-full flex flex-col gap-6 relative">
@@ -106,35 +100,17 @@ export function CertificatesGallery() {
         </div>
       </div>
 
-      <div className="relative group/gallery">
-        {/* Navigation Arrows */}
-        <button 
-          onClick={scrollLeft}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-[#decba4]/40 hover:bg-[#decba4]/20 transition-all z-20 backdrop-blur-md"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        
-        <button 
-          onClick={scrollRight}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-[#decba4]/40 hover:bg-[#decba4]/20 transition-all z-20 backdrop-blur-md"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-
-        {/* Scrollable Container */}
-        <div 
-          ref={scrollRef}
-          className="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory flex gap-6 px-4 py-8"
-        >
-          {certificates.map((cert, idx) => (
+      <div className="relative">
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-4">
+          {visibleCertificates.map((cert, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="w-[280px] md:w-[320px] shrink-0 snap-center"
+              transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
+              className="w-full"
             >
               <a 
                 href={cert.pdf} 
@@ -169,6 +145,18 @@ export function CertificatesGallery() {
             </motion.div>
           ))}
         </div>
+
+        {/* Show More / Show Less Button */}
+        {certificates.length > 6 && (
+          <div className="flex justify-center mt-8">
+            <Button 
+              onClick={() => setShowAll(!showAll)} 
+              variant="secondary"
+            >
+              {showAll ? "Show Less" : "Show More"}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

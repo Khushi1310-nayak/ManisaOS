@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Phone, Mail, ExternalLink } from "lucide-react";
+import { Mail, ExternalLink } from "lucide-react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -33,12 +33,6 @@ export function ContactCards() {
       icon: <LinkedinIcon className="w-6 h-6" />
     },
     {
-      title: "Phone",
-      display: "+91 7077780027",
-      link: "tel:+917077780027",
-      icon: <Phone className="w-6 h-6" />
-    },
-    {
       title: "Email",
       display: "khushinayak127@gmail.com",
       link: "mailto:khushinayak127@gmail.com",
@@ -47,12 +41,12 @@ export function ContactCards() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
       {cards.map((card, idx) => (
         <motion.a
           key={card.title}
           href={card.link}
-          target={card.title === "Phone" || card.title === "Email" ? "_self" : "_blank"}
+          target={card.title === "Email" ? "_self" : "_blank"}
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,9 +73,7 @@ export function ContactCards() {
             </p>
 
             <div className="mt-6 text-[#decba4]/50 group-hover:text-[#decba4] transition-colors relative z-10">
-              {card.title === "Phone" ? (
-                 <Phone className="w-4 h-4" />
-              ) : card.title === "Email" ? (
+              {card.title === "Email" ? (
                  <Mail className="w-4 h-4" />
               ) : (
                 <ExternalLink className="w-4 h-4" />

@@ -88,7 +88,7 @@ export function ProfileHeader() {
               The user provided an image. 
             */}
             <Image 
-              src="/manisa.jpg" 
+              src="/Khushi1.jpeg" 
               alt="Manisa Nayak" 
               fill
               className="object-cover rounded-[2.5rem] filter contrast-[1.1] brightness-[0.9] group-hover:scale-105 transition-transform duration-1000"

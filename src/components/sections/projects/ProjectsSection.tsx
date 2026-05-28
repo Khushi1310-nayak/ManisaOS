@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { ProjectsHero } from "./ProjectsHero";
-import { ProjectsStatsBar } from "./ProjectsStatsBar";
 import { ProjectFilters } from "./ProjectFilters";
 import { ProjectList } from "./ProjectList";
 import { ProjectsCTA } from "./ProjectsCTA";
@@ -39,11 +38,6 @@ export function ProjectsSection() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
         {/* Top Hero Area */}
         <ProjectsHero />
-
-        {/* Stats Bar */}
-        <div className="w-full mt-12 mb-16">
-          <ProjectsStatsBar />
-        </div>
 
         {/* Filters */}
         <div className="w-full flex justify-center mb-12">
