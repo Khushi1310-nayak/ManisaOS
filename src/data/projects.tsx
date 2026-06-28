@@ -71,8 +71,81 @@ const GithubIcon = ({ className }: { className?: string }) => (
 
 export const allProjects: Project[] = [
   {
-    id: "focusync",
+    id: "contritrack",
     number: "01",
+    category: "Productivity",
+    subCategories: ["Full Stack", "AI / ML"],
+    isFeatured: true,
+    title: "ContriTrack",
+    description: "AI-powered academic collaboration and telemetry platform for student teams and developers.",
+    details: "ContriTrack is an AI-powered academic collaboration and telemetry platform designed for students, developers, engineering teams, and hackathon communities. The platform helps teams manage workspaces, track contributions, monitor collaboration fairness, visualize productivity trends, conduct meetings, manage recruitment pipelines, and receive AI-powered insights through real-time analytics systems. Built with a modern full-stack architecture and enterprise-inspired design system, ContriTrack transforms collaborative workflows into a structured and intelligent productivity ecosystem.",
+    features: [
+      { title: "Workspace Management", desc: "Dynamic workspace initialization.", icon: <Layout className="w-5 h-5" /> },
+      { title: "AI Insights", desc: "Intelligent suggestions using Gemini.", icon: <Brain className="w-5 h-5" /> },
+      { title: "Telemetry", desc: "Real-time analytics dashboards.", icon: <BarChart3 className="w-5 h-5" /> },
+      { title: "Teams Management", desc: "Collaboration monitoring.", icon: <UserCircle className="w-5 h-5" /> },
+      { title: "Reports System", desc: "AI-generated reporting.", icon: <FileText className="w-5 h-5" /> },
+      { title: "Security", desc: "Identity synchronization.", icon: <Shield className="w-5 h-5" /> }
+    ],
+    metrics: [
+      { label: "AI Integration", value: "Gemini", status: "active" },
+      { label: "Database", value: "Supabase", status: "secured" },
+      { label: "Deployment", value: "Vercel", status: "live" }
+    ],
+    techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "Prisma", "Gemini API"],
+    githubLink: "https://github.com/Khushi1310-nayak/ContriTrack",
+    liveLink: "https://contri-track.vercel.app/",
+    preview: (
+      <div className="relative w-full h-full flex flex-col p-6 gap-4 bg-[#0d1117] overflow-hidden group/p border border-white/5">
+        <div className="flex items-center justify-between border-b border-white/10 pb-3">
+           <div className="flex items-center gap-2">
+              <GithubIcon className="w-5 h-5 text-white" />
+              <div className="flex flex-col">
+                 <span className="text-[10px] font-mono text-white/90">Khushi1310-nayak/ContriTrack</span>
+                 <span className="text-[8px] text-emerald-400 font-mono">● Active Telemetry</span>
+              </div>
+           </div>
+           <div className="flex gap-1.5">
+              <div className="px-2 py-0.5 rounded-full border border-white/20 text-[7px] text-white/60 font-mono">Public</div>
+           </div>
+        </div>
+        <div className="flex-grow space-y-3">
+           <div className="bg-[#010409] border border-white/10 rounded-lg p-2.5 flex flex-col gap-1.5 group-hover:border-emerald-500/30 transition-colors">
+              <div className="text-[7px] text-white/50 font-mono uppercase tracking-widest">Contribution Analytics</div>
+              <div className="flex gap-1">
+                 {[...Array(12)].map((_, i) => (
+                    <div key={i} className="flex flex-col gap-1">
+                       {[...Array(3)].map((_, j) => {
+                          const intensity = [0, 1, 2, 3, 4][(i * 3 + j) % 5];
+                          const colors = ['bg-white/5', 'bg-[#0e4429]', 'bg-[#006d32]', 'bg-[#26a641]', 'bg-[#39d353]'];
+                          return (
+                             <div key={j} className={`w-2 h-2 rounded-[1px] ${colors[intensity]} ${i > 8 && j === 1 ? 'animate-pulse' : ''}`} />
+                          );
+                       })}
+                    </div>
+                 ))}
+                 <div className="flex flex-col gap-1 w-full justify-end items-end pl-2">
+                    <BarChart3 className="w-5 h-5 text-emerald-500/50" />
+                 </div>
+              </div>
+           </div>
+           <div className="grid grid-cols-2 gap-2">
+              <div className="bg-[#010409] border border-white/10 rounded-lg p-2 flex flex-col gap-1">
+                 <div className="text-[12px] font-bold text-white font-mono">1,024</div>
+                 <div className="text-[7px] text-white/40 uppercase font-bold tracking-widest">Total Commits</div>
+              </div>
+              <div className="bg-[#010409] border border-white/10 rounded-lg p-2 flex flex-col gap-1">
+                 <div className="text-[12px] font-bold text-emerald-400 font-mono">98%</div>
+                 <div className="text-[7px] text-white/40 uppercase font-bold tracking-widest">Collab Health</div>
+              </div>
+           </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: "focusync",
+    number: "02",
     category: "Productivity",
     subCategories: ["AI / ML", "Full Stack"],
     isFeatured: true,
@@ -138,7 +211,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "skillverse",
-    number: "02",
+    number: "03",
     category: "Web Development",
     subCategories: ["Full Stack"],
     isFeatured: true,
@@ -204,7 +277,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "buildbuddy",
-    number: "03",
+    number: "04",
     category: "Hackathon",
     subCategories: ["AI / ML", "Full Stack"],
     isFeatured: true,
@@ -267,7 +340,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "styla",
-    number: "04",
+    number: "05",
     category: "AI / ML",
     subCategories: ["Hackathon"],
     isFeatured: true,
@@ -332,7 +405,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "gemini-cli",
-    number: "05",
+    number: "06",
     category: "AI / ML",
     subCategories: ["Tools & Utilities", "Open Source"],
     title: "Gemini CLI",
@@ -387,7 +460,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "orchidvault",
-    number: "06",
+    number: "07",
     category: "Productivity",
     subCategories: ["Web Development", "Full Stack"],
     title: "OrchidVault",
@@ -454,7 +527,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "edu-tracker",
-    number: "07",
+    number: "08",
     category: "Productivity",
     subCategories: ["Web Development", "Full Stack", "Tools & Utilities"],
     title: "Edu-Tracker",
@@ -517,7 +590,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "trackwise",
-    number: "08",
+    number: "09",
     category: "Productivity",
     subCategories: ["Web Development", "Full Stack", "Tools & Utilities"],
     title: "TrackWise",
@@ -584,7 +657,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "restaurant",
-    number: "09",
+    number: "10",
     category: "Web Development",
     title: "Restaurant Website",
     description: "A modern restaurant website with elegant UI, menu showcase, and reservation system.",
@@ -642,7 +715,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "photography",
-    number: "10",
+    number: "11",
     category: "Web Development",
     subCategories: ["Creative"],
     title: "Photography Portfolio",
@@ -699,7 +772,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "personal",
-    number: "11",
+    number: "12",
     category: "Web Development",
     subCategories: ["Creative"],
     title: "Personal Portfolio",
@@ -758,7 +831,7 @@ export const allProjects: Project[] = [
   },
   {
     id: "midnight-echoes",
-    number: "12",
+    number: "13",
     category: "Web Development",
     subCategories: ["Creative"],
     title: "Midnight Echoes",
@@ -820,68 +893,6 @@ export const allProjects: Project[] = [
            </div>
         </div>
         <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
-      </div>
-    )
-  },
-  {
-    id: "ai-honeypot",
-    number: "13",
-    category: "AI / ML",
-    subCategories: ["Hackathon"],
-    title: "AI Agent Honeypot",
-    description: "AI-powered honeypot system that detects and learns from intrusion attempts.",
-    details: "AI Agent Honeypot is an AI-powered cybersecurity system developed during the India AI Impact Buildathon. It intelligently simulates vulnerable environments to detect and learn from malicious intrusion attempts while improving defensive strategies.",
-    features: [
-      { title: "AI Threat Detection", desc: "Intelligent pattern matching for attacks.", icon: <Brain className="w-5 h-5" /> },
-      { title: "Honeypot Sim", desc: "Decoy systems to trap attackers.", icon: <Shield className="w-5 h-5" /> },
-      { title: "Cyber Analytics", desc: "Real-time threat landscape insights.", icon: <BarChart3 className="w-5 h-5" /> },
-      { title: "Monitoring", desc: "24/7 intrusion surveillance system.", icon: <Monitor className="w-5 h-5" /> },
-      { title: "Intelligence", desc: "Self-learning defense mechanisms.", icon: <Cpu className="w-5 h-5" /> },
-      { title: "Defense", desc: "Automated vulnerability patching.", icon: <Lock className="w-5 h-5" /> }
-    ],
-    metrics: [
-      { label: "Status", value: "Impact Phase", status: "active" },
-      { label: "Built at", value: "Buildathon '25", status: "live" },
-      { label: "AI Security", value: "High Level", status: "secured" }
-    ],
-    techStack: ["Python", "FastAPI", "MongoDB", "Scikit-Learn"],
-    githubLink: "#",
-    liveLink: "#",
-    preview: (
-      <div className="relative w-full h-full flex flex-col p-6 gap-6 bg-[#050505] overflow-hidden group-hover:bg-[#0a0a0a] transition-all duration-700">
-        <div className="flex items-center justify-between relative z-10">
-           <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500">
-                 <ShieldAlert className="w-5 h-5 animate-pulse" />
-              </div>
-              <div className="flex flex-col">
-                 <span className="text-[12px] font-bold text-white tracking-tight uppercase">Threat Defense</span>
-                 <span className="text-[8px] text-red-500 font-bold uppercase tracking-[0.2em]">Intelligence Core</span>
-              </div>
-           </div>
-           <div className="px-2 py-1 rounded bg-red-500/20 border border-red-500/30 text-[8px] font-bold text-red-400">
-              CRITICAL
-           </div>
-        </div>
-        <div className="flex-grow bg-black/60 border border-red-500/10 rounded-2xl p-4 font-mono text-[8px] text-red-400/80 space-y-2 relative overflow-hidden group-hover:border-red-500/30 transition-all">
-           <div className="flex items-center gap-2 text-red-500 font-bold uppercase tracking-widest text-[7px] mb-1">
-              <Activity className="w-2.5 h-2.5" /> Intrusion Logs Active
-           </div>
-           <div>[10:45:02] UNKNOWN IP DETECTED: 192.168.1.45</div>
-           <div>[10:45:08] AI DEFENSE: SCALING HONEYPOT LAYER 4</div>
-           <div className="text-white/40 italic">[10:45:12] Pattern analyzed: Brute force attempt</div>
-           <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(239,68,68,0.05)_50%,transparent_100%)] bg-[size:100%_40px] animate-[shimmer_2s_infinite]" />
-        </div>
-        <div className="grid grid-cols-2 gap-3 relative z-10">
-           <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col gap-1">
-              <span className="text-[7px] text-white/30 uppercase font-bold tracking-widest">Blocked</span>
-              <span className="text-lg font-bold text-white tracking-tight">1,240</span>
-           </div>
-           <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col gap-1">
-              <span className="text-[7px] text-white/30 uppercase font-bold tracking-widest">Defenses</span>
-              <span className="text-lg font-bold text-emerald-400 tracking-tight">ACTIVE</span>
-           </div>
-        </div>
       </div>
     )
   }
