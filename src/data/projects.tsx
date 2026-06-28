@@ -29,8 +29,7 @@ import {
   Utensils, 
   Camera, 
   Sparkles,
-  Music,
-  ShieldAlert
+  Music
 } from "lucide-react";
 import Image from "next/image";
 
