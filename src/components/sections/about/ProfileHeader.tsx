@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Target, Calendar, GraduationCap } from "lucide-react";
+
 import { GlassCard } from "@/components/ui/GlassCard";
 import Image from "next/image";
 
@@ -106,45 +106,7 @@ export function ProfileHeader() {
           </div>
         </div>
 
-        {/* Floating Info Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute -right-4 lg:-right-12 top-[40%] z-30"
-        >
-          <GlassCard className="py-5 px-6 rounded-3xl border-[#decba4]/20 shadow-[0_20px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl flex flex-col gap-4">
-            <div className="flex items-start gap-4">
-              <MapPin className="w-5 h-5 text-[#decba4] mt-1" />
-              <div>
-                <p className="text-white/50 text-xs uppercase tracking-wider mb-1">Location</p>
-                <p className="text-white text-sm font-medium">India 🇮🇳</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <Target className="w-5 h-5 text-[#decba4] mt-1" />
-              <div>
-                <p className="text-white/50 text-xs uppercase tracking-wider mb-1">Current Focus</p>
-                <p className="text-white text-sm font-medium">AI Systems & Full Stack</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <Calendar className="w-5 h-5 text-[#decba4] mt-1" />
-              <div>
-                <p className="text-white/50 text-xs uppercase tracking-wider mb-1">Availability</p>
-                <p className="text-white text-sm font-medium">Open to Opportunities</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <GraduationCap className="w-5 h-5 text-[#decba4] mt-1" />
-              <div>
-                <p className="text-white/50 text-xs uppercase tracking-wider mb-1">Study</p>
-                <p className="text-white text-sm font-medium">B.Tech CSIT <br/> (2023 - 2027)</p>
-              </div>
-            </div>
-          </GlassCard>
-        </motion.div>
+
       </motion.div>
     </div>
   );
