@@ -379,6 +379,7 @@ export const allProjects: Project[] = [
                 src="/projects/styla-preview.png" 
                 alt="Styla Fashion Preview" 
                 fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -566,10 +567,16 @@ export const allProjects: Project[] = [
            </div>
         </div>
         <div className="flex-grow grid grid-cols-5 gap-2 items-end">
-           {[40, 70, 95, 60, 85].map((h, i) => (
+           {[
+             { h: "h-[40%]", l: 'M' },
+             { h: "h-[70%]", l: 'T' },
+             { h: "h-[95%]", l: 'W' },
+             { h: "h-[60%]", l: 'T' },
+             { h: "h-[85%]", l: 'F' }
+           ].map((item, i) => (
              <div key={i} className="flex flex-col items-center gap-2 h-full justify-end">
-                <div className="w-full bg-emerald-500/20 border-t border-emerald-500/40 rounded-t-lg transition-all duration-700 group-hover:bg-emerald-500/30" style={{ height: `${h}%` }} />
-                <span className="text-[6px] text-white/20 uppercase font-bold">{['M', 'T', 'W', 'T', 'F'][i]}</span>
+                <div className={`w-full bg-emerald-500/20 border-t border-emerald-500/40 rounded-t-lg transition-all duration-700 group-hover:bg-emerald-500/30 ${item.h}`} />
+                <span className="text-[6px] text-white/20 uppercase font-bold">{item.l}</span>
              </div>
            ))}
         </div>
@@ -692,6 +699,7 @@ export const allProjects: Project[] = [
                 src="/projects/restaurant-preview.png" 
                 alt="Luxury Restaurant Preview" 
                 fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -870,8 +878,19 @@ export const allProjects: Project[] = [
         </div>
         <div className="flex-grow flex flex-col justify-center gap-4 relative z-10">
            <div className="flex items-end gap-1.5 h-16 justify-center">
-              {[40, 70, 95, 60, 85, 50, 90, 75, 45, 65].map((h, i) => (
-                <div key={i} className="flex-1 bg-gradient-to-t from-purple-500 to-indigo-500 rounded-full animate-[pulse_2s_infinite]" style={{ height: `${h}%`, animationDelay: `${i * 100}ms` }} />
+              {[
+                { h: "h-[40%]", d: "[animation-delay:0ms]" },
+                { h: "h-[70%]", d: "[animation-delay:100ms]" },
+                { h: "h-[95%]", d: "[animation-delay:200ms]" },
+                { h: "h-[60%]", d: "[animation-delay:300ms]" },
+                { h: "h-[85%]", d: "[animation-delay:400ms]" },
+                { h: "h-[50%]", d: "[animation-delay:500ms]" },
+                { h: "h-[90%]", d: "[animation-delay:600ms]" },
+                { h: "h-[75%]", d: "[animation-delay:700ms]" },
+                { h: "h-[45%]", d: "[animation-delay:800ms]" },
+                { h: "h-[65%]", d: "[animation-delay:900ms]" }
+              ].map((item, i) => (
+                <div key={i} className={`flex-1 bg-gradient-to-t from-purple-500 to-indigo-500 rounded-full animate-[pulse_2s_infinite] ${item.h} ${item.d}`} />
               ))}
            </div>
            <div className="flex justify-between items-center text-[10px] font-mono text-white/80">

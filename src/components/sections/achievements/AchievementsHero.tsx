@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from "react";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { HolographicTrophy } from "./HolographicTrophy";
 import { Lightbulb, Wrench, Rocket, Compass, X } from "lucide-react";
@@ -92,7 +93,7 @@ export function AchievementsHero() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="w-full lg:w-[350px] z-10 lg:justify-self-end"
       >
-        <GlassCard className="p-6 md:p-8 border-[#decba4]/20 bg-gradient-to-br from-black/60 to-[#3e5151]/10 flex flex-col h-full relative overflow-hidden">
+        <TiltCard className="p-6 md:p-8 border-[#decba4]/20 bg-gradient-to-br from-black/60 to-[#3e5151]/10 flex flex-col h-full relative overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
             <h3 className="text-[11px] uppercase tracking-widest font-semibold text-white/70">Achievement Status</h3>
@@ -120,9 +121,67 @@ export function AchievementsHero() {
             <span className="text-[10px] text-[#27c93f] font-mono tracking-widest">ALL SYSTEMS OPERATIONAL</span>
             <div className="w-1.5 h-1.5 bg-[#27c93f] rounded-full animate-pulse ml-auto shadow-[0_0_8px_#27c93f]" />
           </div>
-        </GlassCard>
+        </TiltCard>
       </motion.div>
 
     </div>
   );
 }
+
+const TiltCard = ({ children, className }: { children: React.ReactNode, className?: string }) => {
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
+
+  const background = useMotionTemplate`radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(39, 201, 63, 0.15) 0%, transparent 80%)`;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const left = e.clientX - rect.left;
+    const top = e.clientY - rect.top;
+    x.set(left / rect.width - 0.5);
+    y.set(top / rect.height - 0.5);
+    mouseX.set(left);
+    mouseY.set(top);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <div className="group relative [perspective:1000px] h-full w-full">
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-full h-full"
+      >
+        <GlassCard 
+          className={`h-full relative overflow-hidden transition-colors duration-500 group-hover:border-[#27c93f]/30 ${className}`}
+        >
+          {/* Dynamic Follower Glow */}
+          <motion.div 
+            className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{ background }}
+          />
+          <div className="relative z-10 h-full flex flex-col">
+            {children}
+          </div>
+        </GlassCard>
+      </motion.div>
+    </div>
+  );
+};

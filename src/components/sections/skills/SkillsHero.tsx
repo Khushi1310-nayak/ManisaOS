@@ -1,10 +1,43 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { HolographicCore3D } from "./HolographicCore3D";
 
 export function SkillsHero() {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+  // Light green (emerald) subtle glow
+  const background = useMotionTemplate`radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(16, 185, 129, 0.15) 0%, transparent 80%)`;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const left = e.clientX - rect.left;
+    const top = e.clientY - rect.top;
+    x.set(left / rect.width - 0.5);
+    y.set(top / rect.height - 0.5);
+    mouseX.set(left);
+    mouseY.set(top);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center pt-10">
       {/* Left: Typography */}
@@ -73,37 +106,54 @@ export function SkillsHero() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="w-full z-10 lg:ml-auto max-w-sm"
+        className="w-full z-10 lg:ml-auto max-w-sm relative [perspective:1000px] group"
       >
-        <GlassCard className="p-5 border-[#decba4]/20 shadow-[0_20px_40px_rgba(0,0,0,0.4)] bg-[#050a0a]/60 backdrop-blur-xl font-mono text-[11px] md:text-xs">
-          {/* Mac window dots */}
-          <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-3">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+        <motion.div
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          className="relative w-full h-full"
+        >
+          <GlassCard className="p-5 border-[#decba4]/20 shadow-[0_20px_40px_rgba(0,0,0,0.4)] group-hover:border-emerald-500/30 group-hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] transition-all duration-500 bg-[#050a0a]/60 backdrop-blur-xl font-mono text-[11px] md:text-xs relative overflow-hidden">
+            
+            {/* Dynamic Follower Glow */}
+            <motion.div 
+              className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              style={{ background }}
+            />
+
+            <div className="relative z-10">
+              {/* Mac window dots */}
+              <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-3">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                </div>
+              </div>
+              
+              <div className="text-white/40 mb-3">
+                <span className="text-[#3e5151]">{'// Manisa\'s Core'}</span>
+              </div>
+              
+              <div className="space-y-1.5 text-white/80">
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">1</span><span><span className="text-[#a0a0a0]">const</span> <span className="text-[#decba4]">developer</span> = {'{'}</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">2</span><span className="ml-4">name: <span className="text-[#decba4]">&quot;Manisa Nayak&quot;</span>,</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">3</span><span className="ml-4">passion: [<span className="text-[#decba4]">&quot;AI&quot;</span>, <span className="text-[#decba4]">&quot;Web&quot;</span>, <span className="text-[#decba4]">&quot;Productivity&quot;</span>],</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">4</span><span className="ml-4">focus: <span className="text-[#decba4]">&quot;Building impactful solutions&quot;</span>,</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">5</span><span className="ml-4">skills: <span className="text-[#decba4]">&quot;Full Stack + AI/ML&quot;</span>,</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">6</span><span className="ml-4">goal: <span className="text-[#decba4]">&quot;Software Engineer&quot;</span>,</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">7</span><span className="ml-4">motto: <span className="text-[#decba4]">&quot;Code. Create. Impact.&quot;</span></span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">8</span><span>{'};'}</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">9</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">10</span><span>developer.<span className="text-[#decba4]">buildTheFuture</span>();</span></div>
+                <div className="flex mt-3 mb-1"><span className="text-[#decba4] w-4 opacity-50">11</span><span className="text-[#3e5151]">{'// Let\'s create something extraordinary ✦'}</span></div>
+                <div className="flex"><span className="text-[#decba4] w-4 opacity-50">12</span><span className="text-[#decba4] animate-pulse">L</span></div>
+              </div>
             </div>
-          </div>
-          
-          <div className="text-white/40 mb-3">
-            <span className="text-[#3e5151]">{'// Manisa\'s Core'}</span>
-          </div>
-          
-          <div className="space-y-1.5 text-white/80">
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">1</span><span><span className="text-[#a0a0a0]">const</span> <span className="text-[#decba4]">developer</span> = {'{'}</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">2</span><span className="ml-4">name: <span className="text-[#decba4]">&quot;Manisa Nayak&quot;</span>,</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">3</span><span className="ml-4">passion: [<span className="text-[#decba4]">&quot;AI&quot;</span>, <span className="text-[#decba4]">&quot;Web&quot;</span>, <span className="text-[#decba4]">&quot;Productivity&quot;</span>],</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">4</span><span className="ml-4">focus: <span className="text-[#decba4]">&quot;Building impactful solutions&quot;</span>,</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">5</span><span className="ml-4">skills: <span className="text-[#decba4]">&quot;Full Stack + AI/ML&quot;</span>,</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">6</span><span className="ml-4">goal: <span className="text-[#decba4]">&quot;Microsoft&quot;</span>,</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">7</span><span className="ml-4">motto: <span className="text-[#decba4]">&quot;Code. Create. Impact.&quot;</span></span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">8</span><span>{'};'}</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">9</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">10</span><span>developer.<span className="text-[#decba4]">buildTheFuture</span>();</span></div>
-            <div className="flex mt-3 mb-1"><span className="text-[#decba4] w-4 opacity-50">11</span><span className="text-[#3e5151]">{'// Let\'s create something extraordinary ✦'}</span></div>
-            <div className="flex"><span className="text-[#decba4] w-4 opacity-50">12</span><span className="text-[#decba4] animate-pulse">L</span></div>
-          </div>
-        </GlassCard>
+          </GlassCard>
+        </motion.div>
       </motion.div>
     </div>
   );

@@ -14,9 +14,11 @@ import {
   Radar,
   Sparkles,
   Trophy,
-  ArrowUpRight
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 
 interface Achievement {
   badge: string;
@@ -30,6 +32,19 @@ interface Achievement {
 }
 
 export function FeaturedAchievements() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = 400; // approximate width of one card + gap
+      const targetScroll = direction === "left" 
+        ? scrollRef.current.scrollLeft - scrollAmount 
+        : scrollRef.current.scrollLeft + scrollAmount;
+        
+      scrollRef.current.scrollTo({ left: targetScroll, behavior: "smooth" });
+    }
+  };
+
   const achievements: Achievement[] = [
     {
       badge: "OPEN SOURCE",
@@ -259,17 +274,40 @@ export function FeaturedAchievements() {
 
   return (
     <div className="w-full flex flex-col gap-8">
-      <div className="flex items-center gap-3 px-2">
-        <div className="w-10 h-10 rounded-xl bg-black/40 border border-[#decba4]/20 flex items-center justify-center shadow-[0_0_15px_rgba(222,203,164,0.1)]">
-          <Trophy className="w-5 h-5 text-[#decba4]" />
+      <div className="flex items-center justify-between px-2">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-black/40 border border-[#decba4]/20 flex items-center justify-center shadow-[0_0_15px_rgba(222,203,164,0.1)]">
+            <Trophy className="w-5 h-5 text-[#decba4]" />
+          </div>
+          <div className="flex flex-col">
+            <h3 className="text-sm font-bold tracking-[0.3em] text-white uppercase">Featured Archive</h3>
+            <span className="text-[9px] text-[#decba4] font-bold uppercase tracking-widest opacity-60">Verified Milestones</span>
+          </div>
         </div>
-        <div className="flex flex-col">
-          <h3 className="text-sm font-bold tracking-[0.3em] text-white uppercase">Featured Archive</h3>
-          <span className="text-[9px] text-[#decba4] font-bold uppercase tracking-widest opacity-60">Verified Milestones</span>
+
+        {/* Carousel Navigation */}
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={() => scroll("left")}
+            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#decba4] hover:bg-white/10 hover:border-[#decba4]/30 transition-all cursor-pointer"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={() => scroll("right")}
+            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#decba4] hover:bg-white/10 hover:border-[#decba4]/30 transition-all cursor-pointer"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       </div>
 
-      <div className="w-full overflow-x-auto pb-10 hide-scrollbar snap-x snap-mandatory touch-pan-x">
+      <div 
+        ref={scrollRef}
+        className="w-full overflow-x-auto pb-10 snap-x snap-mandatory touch-pan-x scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         <div className="flex gap-6 w-max px-6">
           {achievements.map((item, idx) => (
             <motion.div

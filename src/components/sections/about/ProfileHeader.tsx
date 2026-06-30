@@ -91,6 +91,7 @@ export function ProfileHeader() {
               src="/LinkedIn Main.png" 
               alt="Manisa Nayak" 
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover rounded-[2.5rem] filter contrast-[1.1] brightness-[0.9] group-hover:scale-105 transition-transform duration-1000"
             />
             {/* Cinematic Overlay */}

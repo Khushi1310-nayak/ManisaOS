@@ -7,6 +7,21 @@ export function BackgroundParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Suppress THREE.Clock deprecation warning from internal libraries
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+      if (typeof args[0] === 'string' && args[0].includes('THREE.Clock: This module has been deprecated')) {
+        return;
+      }
+      originalWarn.apply(console, args);
+    };
+
+    return () => {
+      console.warn = originalWarn;
+    };
+  }, []);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -77,8 +92,7 @@ export function BackgroundParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[-2]"
-      style={{ opacity: 0.6 }}
+      className="fixed inset-0 pointer-events-none z-[-2] opacity-60"
     />
   );
 }

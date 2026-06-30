@@ -7,11 +7,10 @@ import { TechStack } from "./TechStack";
 import { CurrentFocus } from "./CurrentFocus";
 import { CurrentlyLearning } from "./CurrentlyLearning";
 import { MyApproach } from "./MyApproach";
-import { QuoteBanner } from "./QuoteBanner";
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative w-full pt-32 pb-20 px-6 z-10">
+    <section id="about" className="relative w-full pt-32 pb-10 px-6 z-10">
       {/* Background Glows for the section */}
       <div className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-[#decba4] opacity-[0.03] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[20%] left-[-10%] w-[60vw] h-[60vw] bg-[#3e5151] opacity-[0.05] rounded-full blur-[150px] pointer-events-none" />
@@ -35,9 +34,6 @@ export function AboutSection() {
           <CurrentlyLearning />
           <MyApproach />
         </div>
-
-        {/* Footer Quote */}
-        <QuoteBanner />
       </div>
     </section>
   );

@@ -17,7 +17,9 @@ export function SkillsSection() {
         <SkillsHero />
         <TechnicalSkills />
         <ProficiencyMetrics />
-        <BentoGridBottom />
+        <div className="-mt-8 md:-mt-12">
+          <BentoGridBottom />
+        </div>
         <TechStrip />
       </div>
     </section>

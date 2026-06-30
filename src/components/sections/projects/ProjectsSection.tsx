@@ -27,7 +27,7 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="relative w-full pt-32 pb-20 z-10 bg-[var(--background)]">
+    <section id="projects" className="relative w-full pt-16 pb-20 z-10 bg-[var(--background)]">
       {/* Dynamic Background Glows */}
       <div className="absolute top-[10%] left-[-20%] w-[70vw] h-[70vw] bg-[#3e5151] opacity-[0.04] rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute top-[40%] right-[-10%] w-[50vw] h-[50vw] bg-[#decba4] opacity-[0.03] rounded-full blur-[120px] pointer-events-none" />
@@ -40,7 +40,7 @@ export function ProjectsSection() {
         <ProjectsHero />
 
         {/* Filters */}
-        <div className="w-full flex justify-center mb-12">
+        <div className="w-full flex justify-center mt-16 mb-12">
           <ProjectFilters activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
         </div>
 

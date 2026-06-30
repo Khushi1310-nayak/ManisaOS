@@ -26,12 +26,7 @@ export function BentoGridBottom() {
     { name: "Time Management", icon: <Clock className="w-4 h-4" /> },
   ];
 
-  const learning = [
-    { name: "Advanced System Design", progress: 70 },
-    { name: "Deep Learning", progress: 60 },
-    { name: "MLOps", progress: 50 },
-    { name: "Cloud Architecture", progress: 65 },
-  ];
+
 
   const achievements = [
     { name: "9.5 CGPA", icon: <Trophy className="w-4 h-4" /> },
@@ -42,7 +37,7 @@ export function BentoGridBottom() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       
       {/* 1. Soft Skills */}
       <motion.div
@@ -69,44 +64,7 @@ export function BentoGridBottom() {
         </GlassCard>
       </motion.div>
 
-      {/* 2. Currently Learning */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        <GlassCard className="h-full p-6 border-[#decba4]/10 bg-gradient-to-b from-black/40 to-black/20 flex flex-col justify-between">
-          <div>
-            <div className="flex items-center gap-2 text-white/50 mb-6 uppercase tracking-widest text-[10px] font-semibold">
-              <span className="w-1.5 h-1.5 bg-[#decba4] rounded-sm" />
-              <span>Currently Learning</span>
-            </div>
-            <div className="space-y-5">
-              {learning.map((item, idx) => (
-                <div key={idx} className="space-y-2">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-white/80">{item.name}</span>
-                    <span className="text-white/50 font-mono">{item.progress}%</span>
-                  </div>
-                  <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${item.progress}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, delay: 0.2 + (idx * 0.1), ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-[#3e5151] to-[#decba4]"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="mt-8 text-center border border-white/5 bg-white/[0.02] py-2 rounded-lg text-xs text-[#decba4]/80">
-            Always learning. Always growing. ✦
-          </div>
-        </GlassCard>
-      </motion.div>
+
 
       {/* 3. Achievements */}
       <motion.div
@@ -170,3 +128,5 @@ export function BentoGridBottom() {
     </div>
   );
 }
+
+
