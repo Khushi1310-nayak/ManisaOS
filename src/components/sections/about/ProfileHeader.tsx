@@ -88,7 +88,7 @@ export function ProfileHeader() {
               The user provided an image. 
             */}
             <Image 
-              src="/LinkedIn Main.png" 
+              src="/linkedin-main.png" 
               alt="Manisa Nayak" 
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
