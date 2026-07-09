@@ -29,8 +29,8 @@ export function BentoGridBottom() {
 
 
   const achievements = [
-    { name: "9.5 CGPA", icon: <Trophy className="w-4 h-4" /> },
-    { name: "15+ Projects Built", icon: <Briefcase className="w-4 h-4" /> },
+    { name: "9.3 CGPA", icon: <Trophy className="w-4 h-4" /> },
+    { name: "12+ Projects Built", icon: <Briefcase className="w-4 h-4" /> },
     { name: "5+ Hackathons", icon: <Zap className="w-4 h-4" /> },
     { name: "AI & Full Stack Enthusiast", icon: <Target className="w-4 h-4" /> },
     { name: "Cloud Deployed Projects", icon: <CloudCog className="w-4 h-4" /> },
