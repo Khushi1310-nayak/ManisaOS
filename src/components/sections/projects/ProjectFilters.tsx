@@ -14,9 +14,7 @@ const categories = [
   "Full Stack",
   "Productivity",
   "Hackathon",
-  "Web Development",
-  "Tools & Utilities",
-  "Creative"
+  "Web Development"
 ];
 
 export function ProjectFilters({ activeFilter, setActiveFilter }: ProjectFiltersProps) {

@@ -111,8 +111,16 @@ export function AllProjectsModal({ isOpen, onClose, projects, onViewDetails }: A
 
             {/* Scrollable Project Area */}
             <div className="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 lg:p-10">
-              {viewType === "grid" ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AnimatePresence mode="wait">
+                {viewType === "grid" ? (
+                  <motion.div
+                    key="grid"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  >
                   {filteredProjects.map((project) => (
                     <motion.div
                       layout
@@ -131,7 +139,9 @@ export function AllProjectsModal({ isOpen, onClose, projects, onViewDetails }: A
                         </div>
                         <div className="p-5 flex flex-col gap-3">
                            <div className="flex items-center justify-between">
-                              <span className="text-[9px] uppercase tracking-widest text-[#decba4] font-bold">{project.category}</span>
+                              <span className="text-[9px] uppercase tracking-widest text-[#decba4] font-bold">
+                                {project.category}
+                              </span>
                               <span className="text-[9px] font-mono text-white/20">{project.number}</span>
                            </div>
                            <h4 className="text-lg font-bold text-white group-hover:text-[#decba4] transition-colors">{project.title}</h4>
@@ -144,9 +154,16 @@ export function AllProjectsModal({ isOpen, onClose, projects, onViewDetails }: A
                       </GlassCard>
                     </motion.div>
                   ))}
-                </div>
-              ) : (
-                <div className="flex flex-col gap-3">
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="list"
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 15 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex flex-col gap-3"
+                  >
                   {filteredProjects.map((project) => (
                     <motion.div
                       layout
@@ -161,7 +178,9 @@ export function AllProjectsModal({ isOpen, onClose, projects, onViewDetails }: A
                            <span className="text-sm font-mono text-white/10">{project.number}</span>
                            <div className="flex flex-col">
                               <h4 className="text-base font-bold text-white group-hover:text-[#decba4] transition-colors uppercase tracking-tight">{project.title}</h4>
-                              <span className="text-[9px] text-[#decba4] font-bold uppercase tracking-widest">{project.category}</span>
+                              <span className="text-[9px] text-[#decba4] font-bold uppercase tracking-widest">
+                                {project.category}
+                              </span>
                            </div>
                         </div>
 
@@ -185,8 +204,9 @@ export function AllProjectsModal({ isOpen, onClose, projects, onViewDetails }: A
                       </GlassCard>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               )}
+              </AnimatePresence>
 
               {filteredProjects.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-20 gap-4">

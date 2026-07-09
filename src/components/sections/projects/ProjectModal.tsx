@@ -6,37 +6,15 @@ import {
   X, 
   ExternalLink
 } from "lucide-react";
-import { ReactNode } from "react";
 
-interface Feature {
-  title: string;
-  desc: string;
-  icon: ReactNode;
-}
+import { Project } from "@/data/projects";
 
-interface Metric {
-  label: string;
-  value: string;
-  status?: "live" | "active" | "secured" | "open";
-}
+
 
 export interface ProjectModalProps {
   isOpen: boolean;
   onClose: () => void;
-  project: {
-    number: string;
-    category: string;
-    title: string;
-    description: string;
-    details: string;
-    features: Feature[];
-    techStack: string[];
-    metrics: Metric[];
-    liveLink: string;
-    githubLink: string;
-    preview: ReactNode;
-    color?: string;
-  } | null;
+  project: Project | null;
 }
 
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -51,7 +29,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 overflow-hidden">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-6 overflow-hidden">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -79,6 +57,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
               </div>
               <button 
                 onClick={onClose}
+                title="Close modal"
                 className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#decba4] hover:border-[#decba4]/40 transition-all group"
               >
                 <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
@@ -122,6 +101,44 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                      ))}
                    </div>
                 </div>
+
+                {/* Impact Metrics */}
+                {project.impactMetrics && project.impactMetrics.length > 0 && (
+                  <div className="flex flex-col gap-5">
+                    <div className="flex items-center gap-2 text-[10px] text-white/30 uppercase tracking-widest font-bold">
+                      <div className="w-1.5 h-[1px] bg-[#decba4]" />
+                      Impact & Results
+                    </div>
+                    <div className="grid grid-cols-1 gap-3">
+                      {project.impactMetrics.map((metric, idx) => (
+                        <div key={idx} className="flex items-start gap-3 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
+                           <span className="text-[14px]">✨</span>
+                           <span className="text-sm font-medium text-white/80 leading-snug">{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Engineering Challenges */}
+                {project.challenges && project.challenges.length > 0 && (
+                  <div className="flex flex-col gap-5">
+                    <div className="flex items-center gap-2 text-[10px] text-white/30 uppercase tracking-widest font-bold">
+                      <div className="w-1.5 h-[1px] bg-[#decba4]" />
+                      Engineering Challenges
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {project.challenges.map((challenge, idx) => (
+                        <div key={idx} className="flex items-start gap-3 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-colors">
+                           <div className="w-4 h-4 mt-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                           </div>
+                           <span className="text-sm font-medium text-white/80 leading-snug">{challenge}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* System Metrics */}
                 <div className="flex flex-col gap-5">

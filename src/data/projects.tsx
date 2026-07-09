@@ -56,6 +56,8 @@ export interface Project {
   details: string;
   features: Feature[];
   metrics: Metric[];
+  impactMetrics?: string[];
+  challenges?: string[];
   techStack: string[];
   preview: ReactNode;
   githubLink: string;
@@ -73,7 +75,7 @@ export const allProjects: Project[] = [
     id: "contritrack",
     number: "01",
     category: "Productivity",
-    subCategories: ["Full Stack", "AI / ML"],
+    subCategories: ["Full Stack"],
     isFeatured: true,
     title: "ContriTrack",
     description: "AI-powered academic collaboration and telemetry platform for student teams and developers.",
@@ -87,9 +89,21 @@ export const allProjects: Project[] = [
       { title: "Security", desc: "Identity synchronization.", icon: <Shield className="w-5 h-5" /> }
     ],
     metrics: [
-      { label: "AI Integration", value: "Gemini", status: "active" },
-      { label: "Database", value: "Supabase", status: "secured" },
-      { label: "Deployment", value: "Vercel", status: "live" }
+      { label: "Architecture", value: "Full-Stack", status: "live" },
+      { label: "AI Model", value: "Gemini", status: "active" },
+      { label: "Database", value: "Supabase", status: "secured" }
+    ],
+    impactMetrics: [
+      "Designed an enterprise-inspired ecosystem serving complete collaboration lifecycles.",
+      "Integrated Gemini AI for real-time burnout awareness and workflow intelligence.",
+      "Implemented Playwright E2E testing ensuring resilient critical path reliability.",
+      "Secured via Firebase & Supabase Auth with structured multi-tenant architectures."
+    ],
+    challenges: [
+      "Real-time telemetry and data synchronization across multiple workspaces.",
+      "Context-aware AI prompt engineering for intelligent reporting.",
+      "Handling role-based authorization for recruitment pipelines.",
+      "Production-grade error tracking with Sentry state recovery."
     ],
     techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "Prisma", "Gemini API"],
     githubLink: "https://github.com/Khushi1310-nayak/ContriTrack",
@@ -146,7 +160,7 @@ export const allProjects: Project[] = [
     id: "focusync",
     number: "02",
     category: "Productivity",
-    subCategories: ["AI / ML", "Full Stack"],
+    subCategories: ["Full Stack"],
     isFeatured: true,
     title: "FOCUSYNC",
     description: "Privacy-first productivity and burnout-awareness app for developers.",
@@ -163,6 +177,18 @@ export const allProjects: Project[] = [
       { label: "AI Integration", value: "Gemini 1.5", status: "active" },
       { label: "Privacy Level", value: "Military Grade", status: "secured" },
       { label: "Deployment", value: "Cloud Run", status: "live" }
+    ],
+    impactMetrics: [
+      "Engineered a 100% privacy-first local architecture with zero backend tracking.",
+      "Built dynamic burnout-awareness algorithms analyzing focus duration and user mood.",
+      "Integrated Gemini AI for real-time coaching and context-aware engineering debug flows.",
+      "Designed a flow-state UI with category-based dynamic theming and animations."
+    ],
+    challenges: [
+      "Managing complex local state and cross-session persistence securely via localStorage.",
+      "Calculating real-time burnout risk using multi-variable algorithms (time, mood, goals).",
+      "Implementing a seamless 'Debug Mode' preventing UI breakage on large Markdown outputs.",
+      "Fetching and parsing live public activity data securely from GitHub APIs."
     ],
     techStack: ["Next.js", "Gemini AI", "Tailwind CSS", "LocalStorage"],
     githubLink: "https://github.com/Khushi1310-nayak/focusync",
@@ -230,6 +256,18 @@ export const allProjects: Project[] = [
       { label: "Community", value: "Global", status: "live" },
       { label: "Stack", value: "MERN Full Stack", status: "active" }
     ],
+    impactMetrics: [
+      "Engineered an auto-generating PDF certification system using html2canvas and jsPDF.",
+      "Built a robust Gamification engine driving user engagement via XP, streaks, and badges.",
+      "Curated a Career Mode with extensive real tech company interview questions and mock scenarios.",
+      "Designed a premium UX focusing on glassmorphism, soft gradients, and psychological engagement."
+    ],
+    challenges: [
+      "Implementing strict Firebase Authentication with verification walls and security rules.",
+      "Generating high-quality, downloadable PDF certificates dynamically on the client side.",
+      "Managing complex global state for XP, levels, and learning progress across multiple modules.",
+      "Creating an auto-play guided product tour without disrupting the core user experience."
+    ],
     techStack: ["React", "Node.js", "MongoDB", "Express"],
     githubLink: "https://github.com/Khushi1310-nayak/SkillVerse",
     liveLink: "https://skillverse-495231731702.us-west1.run.app/",
@@ -278,7 +316,7 @@ export const allProjects: Project[] = [
     id: "buildbuddy",
     number: "04",
     category: "Hackathon",
-    subCategories: ["AI / ML", "Full Stack"],
+    subCategories: [],
     isFeatured: true,
     title: "BuildBuddy",
     description: "AI-powered hackathon project manager from idea to demo faster.",
@@ -295,6 +333,18 @@ export const allProjects: Project[] = [
       { label: "AI Core", value: "OpenAI GPT-4", status: "active" },
       { label: "Built For", value: "Hackathons", status: "live" },
       { label: "Platform", value: "Cross-Platform", status: "live" }
+    ],
+    impactMetrics: [
+      "Engineered an all-in-one AI platform to streamline 24-72 hour high-pressure hackathon sprints.",
+      "Built dynamic Readiness Score algorithms to evaluate project completion in real-time.",
+      "Integrated OpenAI LLMs for instant tech-stack recommendations, ideation, and pitch generation.",
+      "Designed a cross-platform mobile experience using Flutter and Dart architecture."
+    ],
+    challenges: [
+      "Designing intelligent prompting structures for the AI Mentor and Idea Generator.",
+      "Managing complex state for dynamic team builders, Kanban planners, and AI chats.",
+      "Parsing and formatting structured pitch decks and tech stack recommendations from LLM outputs.",
+      "Optimizing cross-platform Flutter rendering for seamless mobile and web deployment."
     ],
     techStack: ["Flutter", "OpenAI", "Firebase", "Dart"],
     githubLink: "https://github.com/Khushi1310-nayak/buildbuddy-hackathon-manager",
@@ -359,6 +409,18 @@ export const allProjects: Project[] = [
       { label: "Logic", value: "Multi-Agent", status: "active" },
       { label: "Platform", value: "Kaggle AI Hub", status: "live" }
     ],
+    impactMetrics: [
+      "Engineered a 7-agent AI architecture coordinating wardrobe, weather, trends, and event styling.",
+      "Built a sophisticated Orchestrator Agent to merge parallel AI outputs into one cohesive fashion recommendation.",
+      "Integrated real-time data using Google Search tools and Weather APIs for dynamic outfit intelligence.",
+      "Designed memory-aware context systems to prevent outfit repetition and learn user preferences."
+    ],
+    challenges: [
+      "Managing long-context memory and state synchronization across multiple independent AI agents.",
+      "Designing robust tool-calling schemas for live weather and fashion trend extraction.",
+      "Implementing a parallel execution pipeline to reduce total response time for outfit generation.",
+      "Handling complex output merging and conflict resolution via the central Orchestrator Agent."
+    ],
     techStack: ["Python", "Gemini API", "FastAPI", "Agentic Framework"],
     githubLink: "https://kaggle.com/competitions/agents-intensive-capstone-project/writeups/new-writeup-1763869712117",
     liveLink: "https://www.kaggle.com/code/manisanayak/styla-ai-fashion-stylist-daily-outfit-concierg",
@@ -407,7 +469,7 @@ export const allProjects: Project[] = [
     id: "gemini-cli",
     number: "06",
     category: "AI / ML",
-    subCategories: ["Tools & Utilities", "Open Source"],
+    subCategories: ["Open Source"],
     title: "Gemini CLI",
     description: "Open-source AI agent that brings the power of Gemini directly into your terminal.",
     details: "Gemini CLI is an open-source AI command-line assistant that brings Gemini directly into the terminal environment. It enables developers to interact with AI through command-based workflows, making coding and AI-assisted development faster within a native terminal experience.",
@@ -423,6 +485,18 @@ export const allProjects: Project[] = [
       { label: "Community", value: "Open Source", status: "open" },
       { label: "AI Model", value: "Gemini Pro", status: "active" },
       { label: "Interface", value: "Command Line", status: "live" }
+    ],
+    impactMetrics: [
+      "Engineered a terminal-native AI agent bridging Gemini models with local developer workflows.",
+      "Integrated MCP (Model Context Protocol) support allowing extensible integrations with GitHub, Slack, and local databases.",
+      "Built advanced context management with file parsing, conversation checkpointing, and Google Search grounding.",
+      "Designed seamless multi-auth systems supporting Google OAuth, Gemini API keys, and Vertex AI for enterprise."
+    ],
+    challenges: [
+      "Managing complex 1M token context windows while parsing multi-file structures directly from the terminal.",
+      "Designing secure execution environments (Sandboxing & Trusted Folders) for arbitrary shell commands.",
+      "Implementing real-time event streaming and headless scripting modes for CI/CD integrations.",
+      "Architecting a modular MCP server connection system handling dynamic tool-calling via standard IO."
     ],
     techStack: ["TypeScript", "Node.js", "Gemini API", "Chalk"],
     githubLink: "https://github.com/Khushi1310-nayak/gemini-cli",
@@ -462,7 +536,7 @@ export const allProjects: Project[] = [
     id: "orchidvault",
     number: "07",
     category: "Productivity",
-    subCategories: ["Web Development", "Full Stack"],
+    subCategories: ["Full Stack"],
     title: "OrchidVault",
     description: "A personal focus sanctuary to organize thoughts, tasks, and creative ideas.",
     details: "OrchidVault is a calm digital sanctuary designed for students and creators to organize thoughts, notes, tasks, and productivity workflows. The platform blends elegant glassmorphism aesthetics with distraction-free productivity tools to create an immersive focus environment.",
@@ -478,6 +552,18 @@ export const allProjects: Project[] = [
       { label: "Built with", value: "Vite + React", status: "active" },
       { label: "Aesthetic", value: "Glassmorphism", status: "live" },
       { label: "Storage", value: "LocalStorage", status: "secured" }
+    ],
+    impactMetrics: [
+      "Designed a calm, glassmorphism-based productivity ecosystem focused on workflow flow-state.",
+      "Built a unified Study Vault for robust PDF, folder, and academic resource management.",
+      "Integrated an ambient music library system natively to reduce context switching.",
+      "Engineered a complete soft-delete recovery system (Trash System) protecting user data."
+    ],
+    challenges: [
+      "Implementing complex file architecture and nested folder state management in React.",
+      "Handling seamless audio playback synchronization within a Single Page Application.",
+      "Integrating Firebase Cloud Storage for secure, scalable academic document hosting.",
+      "Designing a modular UI architecture that balances ambient aesthetics with utility."
     ],
     techStack: ["React", "LocalStorage", "Tailwind", "Framer Motion"],
     githubLink: "https://github.com/Khushi1310-nayak/OrchidVault",
@@ -529,7 +615,7 @@ export const allProjects: Project[] = [
     id: "edu-tracker",
     number: "08",
     category: "Productivity",
-    subCategories: ["Web Development", "Full Stack", "Tools & Utilities"],
+    subCategories: [],
     title: "Edu-Tracker",
     description: "Smart attendance and exam tracker for students with insights and analytics.",
     details: "Edu-Tracker is an academic productivity application built to help students monitor attendance, exams, and academic performance efficiently. It simplifies educational planning through analytics and intuitive tracking systems.",
@@ -545,6 +631,18 @@ export const allProjects: Project[] = [
       { label: "Accuracy", value: "Real-time Sync", status: "active" },
       { label: "Deployment", value: "Vercel", status: "live" },
       { label: "Category", value: "EdTech Tool", status: "active" }
+    ],
+    impactMetrics: [
+      "Engineered a centralized academic dashboard for real-time tracking of attendance and exams.",
+      "Integrated Chart.js for interactive visual insights mapping subject-wise performance trends.",
+      "Built a custom data export engine allowing students to export dashboards for record-keeping.",
+      "Designed an interactive guided onboarding flow to improve initial user adoption."
+    ],
+    challenges: [
+      "Managing complex relational state between subjects, exams, and attendance logs.",
+      "Handling client-side rendering of dynamic charts and responsive visual components.",
+      "Implementing a resilient local storage system for user academic records and resumes.",
+      "Integrating third-party Email.js services for reliable platform communication without a backend."
     ],
     techStack: ["JS", "Chart.js", "LocalStorage", "HTML/CSS"],
     githubLink: "https://github.com/Khushi1310-nayak/Edu-Tracker",
@@ -598,7 +696,7 @@ export const allProjects: Project[] = [
     id: "trackwise",
     number: "09",
     category: "Productivity",
-    subCategories: ["Web Development", "Full Stack", "Tools & Utilities"],
+    subCategories: [],
     title: "TrackWise",
     description: "Career command center to track hackathons, internships, and projects.",
     details: "TrackWise is a productivity and career management platform that helps students track internships, hackathons, projects, and personal growth. It provides structured organization and visual progress tracking through a clean futuristic dashboard experience.",
@@ -614,6 +712,18 @@ export const allProjects: Project[] = [
       { label: "Target", value: "Students / Devs", status: "active" },
       { label: "Status", value: "Production Ready", status: "live" },
       { label: "Platform", value: "Web / PWA", status: "live" }
+    ],
+    impactMetrics: [
+      "Engineered a unified tracking dashboard consolidating hackathons, projects, and internships.",
+      "Built an interactive calendar integration specifically optimized for avoiding hackathon scheduling conflicts.",
+      "Integrated Gemini API for an AI Mentor that provides actionable career and project enhancement suggestions.",
+      "Designed a data visualization suite using bar and pie charts to track long-term professional growth."
+    ],
+    challenges: [
+      "Managing complex cross-domain state linking projects, internship timelines, and hackathon dates.",
+      "Designing adaptive visual charts that dynamically re-render based on fragmented user progress data.",
+      "Implementing effective prompt engineering to ensure the AI Mentor gives context-aware career advice.",
+      "Structuring a scalable frontend architecture in React and TypeScript for future integrations."
     ],
     techStack: ["TypeScript", "Framer Motion", "Tailwind CSS", "React"],
     githubLink: "https://github.com/Khushi1310-nayak/trackwise",
@@ -724,7 +834,7 @@ export const allProjects: Project[] = [
     id: "midnight-echoes",
     number: "13",
     category: "Web Development",
-    subCategories: ["Creative"],
+    subCategories: [],
     title: "Midnight Echoes",
     description: "A playlist hub for original songs and late-night emotional soundscapes.",
     details: "Midnight Echoes is a creative music experience platform featuring original songs, curated playlists, and immersive late-night audio aesthetics. The project focuses on emotional design and cinematic presentation.",
