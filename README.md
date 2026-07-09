@@ -1,205 +1,170 @@
-# ManisaOS
+<div align="center">
+
+# 💻 ManisaOS
+### Cinematic Developer Portfolio & Personal Ecosystem
+
+*A futuristic developer portfolio built to showcase projects, technical skills, and full-stack engineering work through an immersive web experience.*
+
+![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+</div>
+
+---
+
+# 📖 Overview
 
 ManisaOS is a futuristic developer portfolio and personal ecosystem built to showcase projects, technical skills, achievements, creative interests, and full-stack engineering work through an immersive and modern web experience.
 
-Designed with a cinematic UI philosophy, ManisaOS combines interactive frontend systems, smooth animations, responsive layouts, and developer-focused storytelling into a unified digital identity platform.
-
-Live Site: https://manisa-os.vercel.app/
+Designed with a cinematic UI philosophy, ManisaOS combines interactive frontend systems, smooth animations, responsive layouts, and developer-focused storytelling into a unified digital identity platform. The platform is inspired by futuristic operating systems, modern SaaS dashboards, and immersive portfolio experiences.
 
 ---
 
-## Overview
+# ✨ Features
 
-ManisaOS serves as a centralized portfolio platform for showcasing:
-- Full-stack applications
-- AI-integrated systems
-- Technical skills
-- Achievements & hackathons
-- Creative interests
-- Contact & professional presence
-
-The platform is inspired by futuristic operating systems, modern SaaS dashboards, and immersive portfolio experiences.
+- 📱 **Fully Responsive Design:** Adapts flawlessly across mobile and desktop environments.
+- 🎬 **Smooth Page Transitions:** Fluid navigation driven by Framer Motion.
+- 🎨 **Modern Glassmorphism:** Layered, translucent UI components with neon gradients.
+- ⚡ **Optimized Rendering:** Fast, performant frontend architecture using Next.js.
+- 📖 **Structured Storytelling:** Dedicated sections for personal background, skills, and projects.
+- 🧩 **Modular Component Architecture:** Clean and scalable codebase.
 
 ---
 
-## Core Pages
+# 🏗 Architecture
 
-### Home
-- Hero section with cinematic introduction
-- Dynamic UI interactions
-- Personal branding & identity presentation
-- Smooth animated transitions
-
-### About
-- Developer background
-- Technical interests
-- Career goals
-- Personal journey and philosophy
-
-### Projects
-Showcases major projects including:
-- ContriTrack
-- FOCUSYNC
-- SkillVerse
-- STYLA
-- OrchidVault
-- BuildBuddy
-
-Each project highlights:
-- Tech stack
-- Features
-- Problem statement
-- UI/UX direction
-- Deployment links
-
-### Skills
-Displays:
-- Programming languages
-- Frontend technologies
-- Backend systems
-- Databases
-- Cloud technologies
-- AI & developer tools
-
-### Achievements
-Highlights:
-- Hackathon achievements
-- Open source contributions
-- Internship experience
-- Technical milestones
-- Competition participation
-
-### Contact
-Provides:
-- GitHub access
-- LinkedIn profile
-- Email communication
-- Professional networking access
+```mermaid
+graph TD
+    User["User Request"]
+    
+    subgraph Vercel ["Vercel Edge Network"]
+        NextApp["Next.js & React SPA"]
+        
+        subgraph UI_Modules ["ManisaOS Modules"]
+            Home["Cinematic Hero & Identity"]
+            About["Developer Background"]
+            Projects["Project Showcase Gallery"]
+            Skills["Tech Stack & Abilities"]
+            Achievements["Milestones & Hackathons"]
+            Contact["Networking Links"]
+        end
+        
+        subgraph AnimationLayer ["Animation & Styling Engine"]
+            Framer["Framer Motion"]
+            Tailwind["Tailwind CSS"]
+        end
+    end
+    
+    User --> NextApp
+    
+    NextApp --> Home
+    NextApp --> About
+    NextApp --> Projects
+    NextApp --> Skills
+    NextApp --> Achievements
+    NextApp --> Contact
+    
+    Home --> Framer
+    About --> Framer
+    Projects --> Framer
+    Skills --> Framer
+    Achievements --> Framer
+    Contact --> Framer
+    
+    Home --> Tailwind
+    About --> Tailwind
+    Projects --> Tailwind
+    Skills --> Tailwind
+    Achievements --> Tailwind
+    Contact --> Tailwind
+```
 
 ---
 
-## Tech Stack
+# 🛠 Tech Stack
 
-### Frontend
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-
-### Animation & UI
-- Framer Motion
-- Glassmorphism UI Patterns
-- Gradient-based visual systems
-- Responsive motion architecture
-
-### Deployment
-- Vercel
+| Category | Technology | Purpose |
+|----------|------------|---------|
+| **Frontend** | Next.js, React, TypeScript | Core application logic and SSR/SSG framework |
+| **Styling** | Tailwind CSS | Utility-first responsive design and glassmorphism |
+| **Animation** | Framer Motion | Advanced UI transitions and interactive motion |
+| **Deployment** | Vercel | High-performance edge network hosting |
 
 ---
 
-## Design Philosophy
+# 🎨 Design Philosophy
 
 ManisaOS follows a futuristic and cinematic design system focused on:
-- immersive storytelling
-- smooth interactions
-- developer-centric presentation
-- minimal but expressive UI
-- premium portfolio aesthetics
+- Immersive storytelling and premium portfolio aesthetics
+- Minimal but highly expressive UI
+- Developer-centric presentation
 
-The visual architecture combines:
-- dark neutral palettes
-- neon gradients
-- layered glassmorphism
-- responsive animations
-- modular layouts
+**Visual Architecture:**
+- Dark neutral palettes
+- Neon gradients
+- Layered glassmorphism
+- Responsive animations
 
-Inspired by:
-- futuristic operating systems
-- modern SaaS products
-- developer dashboards
-- AI-native interfaces
-
----
-
-## Features
-
-- Fully responsive design
-- Smooth page transitions
-- Animated UI components
-- Modern glassmorphism styling
-- Optimized rendering performance
-- Structured portfolio storytelling
-- Modular component architecture
+Inspired by futuristic operating systems, modern SaaS products, developer dashboards, and AI-native interfaces.
 
 ---
 
 # 📸 Screenshots
 
-## 🏠 Home Page
+### 🏠 Home Page
 <img width="100%" alt="Home Page" src="https://drive.google.com/uc?export=view&id=153mOjbjR2OBLolRtRyu5bY3-bnxTBe0i" />
 
 ---
 
-## 👩‍💻 About Page
+### 👩💻 About Page
 <img width="100%" alt="About Page" src="https://drive.google.com/uc?export=view&id=1YnM0Wn1W9Nnh0C-jTPqoIici9itpxQIL" />
 
 ---
 
-## 🚀 Projects Section
+### 🚀 Projects Section
 <img width="100%" alt="Projects Section" src="https://drive.google.com/uc?export=view&id=1KPN8EcZUoGQQcb6SxzQQVl6KzHObOMrz" />
 
 ---
 
-## 🛠️ Skills Section
+### 🛠️ Skills Section
 <img width="100%" alt="Skills Section" src="https://drive.google.com/uc?export=view&id=1NMz_loWsZdm9vri74Qm4avM8NfaIRRxH" />
 
 ---
 
-## 🏆 Achievements Section
+### 🏆 Achievements Section
 <img width="100%" alt="Achievements Section" src="https://drive.google.com/uc?export=view&id=1PiERGmkUKO6C9uDMq-gfAmgrUrLzxw9D" />
 
 ---
 
-## 📩 Contact Section
+### 📩 Contact Section
 <img width="100%" alt="Contact Section" src="https://drive.google.com/uc?export=view&id=1PiERGmkUKO6C9uDMq-gfAmgrUrLzxw9D" />
 
 ---
 
-## Architecture Highlights
+# ⚙️ Installation & Setup
 
-- Component-based scalable frontend architecture
-- Modern animation workflow using Framer Motion
-- Responsive design system for desktop and mobile
-- Optimized UI rendering and transitions
-- Structured content hierarchy
-- Clean portfolio navigation system
-
----
-
-## Getting Started
-
-### Clone the Repository
-
+## 1. Clone the repository
 ```bash
 git clone https://github.com/Khushi1310-nayak/ManisaOS.git
 cd ManisaOS
 ```
 
-### Install Dependencies
-
+## 2. Install dependencies
 ```bash
 npm install
 ```
 
-### Run Development Server
-
+## 3. Run Development Server
 ```bash
 npm run dev
 ```
 
 ---
 
-## Future Roadmap
+# 🚀 Future Roadmap
 
 - Interactive project case studies
 - Integrated blog system
@@ -212,24 +177,37 @@ npm run dev
 
 ---
 
-## Contributing
+# 🤝 Contributing
 
-Contributions are welcome.
+Contributions are welcome!
 
-Fork the repository, create a feature branch, and submit a pull request.
+Feel free to fork the repository, create a feature branch, and submit a pull request.
 
 ---
 
-## License
+# 📜 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## Author
+# 👩💻 Author
 
-### Manisa Nayak
+## **Manisa Nayak**
 
-- Portfolio: https://manisa-os.vercel.app/
-- GitHub: https://github.com/Khushi1310-nayak
-- LinkedIn: https://www.linkedin.com/in/manisa-nayak-185bb5378/
+🎓 Student | Full-Stack Developer | AI Product Builder
+
+Passionate about:
+- Full-Stack Architecture
+- User Experience (UI/UX)
+- AI Automation & Product Building
+
+### Connect with Me
+
+**Portfolio:** https://manisa-os.vercel.app/  
+**GitHub:** https://github.com/Khushi1310-nayak  
+**LinkedIn:** https://www.linkedin.com/in/manisa-nayak-185bb5378/
+
+---
+
+## ⭐ If you found this project interesting, consider giving it a Star!
