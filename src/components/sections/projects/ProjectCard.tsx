@@ -3,7 +3,7 @@
 import React, { ReactNode, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Pin } from "lucide-react";
 
 export interface ProjectCardProps {
   number: string;
@@ -14,6 +14,8 @@ export interface ProjectCardProps {
   liveLink?: string;
   githubLink?: string;
   children: ReactNode; // Mini UI Preview
+  isPinned?: boolean;
+  onTogglePin?: (e: React.MouseEvent) => void;
   onViewDetails?: () => void;
 }
 
@@ -23,7 +25,17 @@ const GithubIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const getCategoryColor = (category: string) => {
+const getCategoryColor = (category: string, title?: string) => {
+  if (title === 'STYLA') {
+    return {
+      border: 'group-hover:border-amber-500/50',
+      shadow: 'group-hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.4)]',
+      text: 'group-hover:text-rose-400',
+      textDefault: 'text-amber-400',
+      accent: 'bg-gradient-to-r from-amber-500 to-rose-500',
+      glow: 'rgba(245,158,11,0.25) 0%, rgba(244,63,94,0.15) 40%'
+    };
+  }
   const cat = category.toLowerCase();
   if (cat.includes('ai') || cat.includes('ml')) {
     return { 
@@ -82,6 +94,8 @@ export function ProjectCard({
   liveLink = "#",
   githubLink = "#",
   children,
+  isPinned,
+  onTogglePin,
   onViewDetails,
 }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -97,8 +111,8 @@ export function ProjectCard({
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
 
-  const colors = getCategoryColor(category);
-  const background = useMotionTemplate`radial-gradient(circle at ${mouseX}px ${mouseY}px, ${colors.glow} 0%, transparent 80%)`;
+  const colors = getCategoryColor(category, title);
+  const background = useMotionTemplate`radial-gradient(circle at ${mouseX}px ${mouseY}px, ${colors.glow}, transparent 80%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -149,9 +163,20 @@ export function ProjectCard({
                   <h3 className={`text-lg font-bold text-white tracking-tight ${colors.text} transition-colors`}>{title}</h3>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <div className={`w-1.5 h-1.5 rounded-full ${colors.accent} shadow-lg animate-pulse`} />
-                <span className="text-[9px] uppercase tracking-widest text-white/40 font-bold">Live</span>
+              <div className="flex items-center gap-3">
+                {onTogglePin && (
+                  <button 
+                    onClick={onTogglePin}
+                    className={`relative z-20 p-1.5 rounded-full transition-all duration-300 ${isPinned ? 'bg-white/10 text-white' : 'bg-transparent text-white/30 hover:text-white/80 hover:bg-white/5'}`}
+                    title={isPinned ? "Unpin Project" : "Pin Project"}
+                  >
+                    <Pin className={`w-3.5 h-3.5 ${isPinned ? 'fill-current' : ''}`} />
+                  </button>
+                )}
+                <div className="flex items-center gap-2">
+                  <div className={`w-1.5 h-1.5 rounded-full ${colors.accent} shadow-lg animate-pulse`} />
+                  <span className="text-[9px] uppercase tracking-widest text-white/40 font-bold">Live</span>
+                </div>
               </div>
             </div>
 

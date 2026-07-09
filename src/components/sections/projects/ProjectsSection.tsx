@@ -23,6 +23,7 @@ export function ProjectsSection() {
   }, [isAllModalOpen, selectedProject]);
 
   const handleViewProjectDetails = (project: Project) => {
+    setIsAllModalOpen(false);
     setSelectedProject(project);
   };
 
