@@ -22,6 +22,26 @@ export function ProjectsSection() {
     }
   }, [isAllModalOpen, selectedProject]);
 
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const currentIndex = allProjects.findIndex(p => p.id === selectedProject.id);
+      if (currentIndex === -1) return;
+
+      if (e.key === "ArrowRight") {
+        const nextIndex = (currentIndex + 1) % allProjects.length;
+        setSelectedProject(allProjects[nextIndex]);
+      } else if (e.key === "ArrowLeft") {
+        const prevIndex = (currentIndex - 1 + allProjects.length) % allProjects.length;
+        setSelectedProject(allProjects[prevIndex]);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject]);
+
   const handleViewProjectDetails = (project: Project) => {
     setIsAllModalOpen(false);
     setSelectedProject(project);
