@@ -120,27 +120,27 @@ Inspired by futuristic operating systems, modern SaaS products, developer dashbo
 ---
 
 ### 👩💻 About Page
-<img width="100%" alt="About Page" src="https://drive.google.com/uc?export=view&id=1YnM0Wn1W9Nnh0C-jTPqoIici9itpxQIL" />
+<img width="1920" height="920" alt="Screenshot (3010)" src="https://github.com/user-attachments/assets/7b7385e3-4304-4f6b-b720-a2048ad1a551" />
 
 ---
 
 ### 🚀 Projects Section
-<img width="100%" alt="Projects Section" src="https://drive.google.com/uc?export=view&id=1KPN8EcZUoGQQcb6SxzQQVl6KzHObOMrz" />
+<img width="1920" height="929" alt="Screenshot (3011)" src="https://github.com/user-attachments/assets/da3a2a95-5056-4ac6-a8cc-108dc0d5e042" />
 
 ---
 
 ### 🛠️ Skills Section
-<img width="100%" alt="Skills Section" src="https://drive.google.com/uc?export=view&id=1NMz_loWsZdm9vri74Qm4avM8NfaIRRxH" />
+<img width="1920" height="946" alt="Screenshot (3012)" src="https://github.com/user-attachments/assets/51d00223-d327-4725-a8c4-3efc3ed4ab8d" />
 
 ---
 
 ### 🏆 Achievements Section
-<img width="100%" alt="Achievements Section" src="https://drive.google.com/uc?export=view&id=1PiERGmkUKO6C9uDMq-gfAmgrUrLzxw9D" />
+<img width="1920" height="943" alt="Screenshot (3013)" src="https://github.com/user-attachments/assets/c108d229-7a86-41e2-87b5-ecab363aca42" />
 
 ---
 
 ### 📩 Contact Section
-<img width="100%" alt="Contact Section" src="https://drive.google.com/uc?export=view&id=1PiERGmkUKO6C9uDMq-gfAmgrUrLzxw9D" />
+<img width="1920" height="936" alt="Screenshot (3014)" src="https://github.com/user-attachments/assets/5a466272-3027-455a-ab4c-196b1398324d" />
 
 ---
 
