@@ -27,11 +27,12 @@ const GithubIcon = ({ className }: { className?: string }) => (
 
 const getCategoryColor = (category: string, title?: string) => {
   if (title === 'STYLA') {
+    const isHackathon = category.toLowerCase().includes('hackathon');
     return {
       border: 'group-hover:border-amber-500/50',
       shadow: 'group-hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.4)]',
-      text: 'group-hover:text-rose-400',
-      textDefault: 'text-amber-400',
+      text: isHackathon ? 'group-hover:text-amber-400' : 'group-hover:text-rose-400',
+      textDefault: isHackathon ? 'text-amber-400' : 'text-rose-400',
       accent: 'bg-gradient-to-r from-amber-500 to-rose-500',
       glow: 'rgba(245,158,11,0.25) 0%, rgba(244,63,94,0.15) 40%'
     };

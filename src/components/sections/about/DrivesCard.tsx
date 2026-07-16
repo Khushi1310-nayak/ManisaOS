@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Cpu, Globe, TrendingUp, Lightbulb } from "lucide-react";
+import { Sparkles, Cpu, Globe, TrendingUp, Lightbulb, Users } from "lucide-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 
 export function DrivesCard() {
@@ -25,6 +25,11 @@ export function DrivesCard() {
       icon: Lightbulb,
       title: "Creativity",
       desc: "I believe the best solutions blend logic with imagination.",
+    },
+    {
+      icon: Users,
+      title: "Community",
+      desc: "Sharing knowledge, building together, and contributing to open source.",
     },
   ];
 
