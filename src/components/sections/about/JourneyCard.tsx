@@ -82,7 +82,7 @@ export function JourneyCard() {
           </div>
 
           <motion.a 
-            href="#achievements"
+            href="#experience"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
