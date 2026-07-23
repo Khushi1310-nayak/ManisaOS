@@ -87,6 +87,34 @@ export function CertificatesGallery() {
       image: "/certificates/images/Naukri Campus.png",
       pdf: "/certificates/pdf/NaukriCampus_Certificate_Participation.pdf"
     },
+    { 
+      title: "Certified Builder", 
+      org: "Airtable", 
+      date: "June 2026", 
+      image: "/certificates/images/Certified Builder.png",
+      pdf: "/certificates/pdf/Airtable Builder.pdf"
+    },
+    { 
+      title: "Open Source Contributor", 
+      org: "Apertre 3.0", 
+      date: "2026", 
+      image: "/certificates/images/Apertre.png",
+      pdf: "/certificates/pdf/Apertre Certificate.pdf"
+    },
+    { 
+      title: "Innovate4FinLit Game Challenge", 
+      org: "Hack2skill", 
+      date: "2026", 
+      image: "/certificates/images/Hack2Skill.png",
+      pdf: "/certificates/pdf/Hack2Skill.pdf"
+    },
+    { 
+      title: "Forward Program", 
+      org: "McKinsey & Company", 
+      date: "June 2026", 
+      image: "/certificates/images/MCKinsey.png",
+      pdf: "/certificates/pdf/McKinseyForward.pdf"
+    }
   ];
 
   const visibleCertificates = showAll ? certificates : certificates.slice(0, 6);
@@ -124,6 +152,7 @@ export function CertificatesGallery() {
                     src={cert.image} 
                     alt={cert.title}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   />
                   

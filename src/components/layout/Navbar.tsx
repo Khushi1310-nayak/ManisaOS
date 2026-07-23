@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -11,6 +10,7 @@ const navItems = [
   { name: "About", icon: User, id: "about" },
   { name: "Projects", icon: Briefcase, id: "projects" },
   { name: "Skills", icon: Award, id: "skills" },
+  { name: "Experience", icon: Briefcase, id: "experience" },
   { name: "Achievements", icon: Award, id: "achievements" },
   { name: "Contact", icon: Mail, id: "contact" },
 ];

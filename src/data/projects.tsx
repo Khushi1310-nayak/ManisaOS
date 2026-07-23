@@ -20,11 +20,9 @@ import {
   PenTool, 
   Terminal, 
   Cloud, 
-  Heart, 
   Activity, 
   GraduationCap, 
   Monitor, 
-  Briefcase, 
   Trophy, 
   Utensils, 
   Camera, 
@@ -270,7 +268,7 @@ export const allProjects: Project[] = [
     ],
     techStack: ["React", "Node.js", "MongoDB", "Express"],
     githubLink: "https://github.com/Khushi1310-nayak/SkillVerse",
-    liveLink: "https://skillverse-495231731702.us-west1.run.app/",
+    liveLink: "https://skill-verse-2v81.vercel.app/",
     preview: (
       <div className="relative w-full h-full flex flex-col p-6 gap-4 overflow-hidden bg-gradient-to-br from-indigo-500/5 to-transparent">
         <div className="flex items-center justify-between">

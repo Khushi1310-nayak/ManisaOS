@@ -4,6 +4,7 @@ import React, { ReactNode, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ExternalLink, Pin } from "lucide-react";
+import { ProjectLiveStats } from "./ProjectLiveStats";
 
 export interface ProjectCardProps {
   number: string;
@@ -204,6 +205,12 @@ export function ProjectCard({
                   </span>
                 ))}
               </div>
+
+              {githubLink && githubLink !== "#" && (
+                <ProjectLiveStats 
+                  githubLink={githubLink} 
+                />
+              )}
 
               <div className="flex items-center justify-between pt-4 border-t border-white/5">
                 <div className="flex gap-4">

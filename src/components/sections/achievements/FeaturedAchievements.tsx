@@ -229,9 +229,9 @@ export function FeaturedAchievements() {
     },
     {
       badge: "OPEN SOURCE",
-      title: "SSOC Season 5 Contributor",
-      description: "Developer Collaboration Nexus. Building impactful open-source projects alongside mentors and global developers.",
-      tags: ["Collab Nexus", "Community Growth", "Nexus Pulse"],
+      title: "ECSoC 2026 Contributor",
+      description: "Elite Coders Summer of Code. Building the UI Components project track alongside global developers.",
+      tags: ["Elite Coders", "UI Components", "Open Source"],
       icon: <Users className="w-5 h-5 text-[#6366f1]" />,
       color: "from-[#6366f1]/20 to-transparent",
       borderColor: "border-[#6366f1]/30",
@@ -254,17 +254,10 @@ export function FeaturedAchievements() {
                 <Users className="w-6 h-6 text-[#6366f1]" />
              </motion.div>
           </div>
-          {/* Leaderboard Hologram snippet */}
-          <div className="space-y-2 relative z-10">
-             {[1, 2, 3].map(i => (
-               <div key={i} className="h-6 rounded bg-white/5 border border-white/10 flex items-center justify-between px-3">
-                  <div className="flex items-center gap-2">
-                     <div className="w-3 h-3 rounded-full bg-[#6366f1]/40" />
-                     <div className="w-12 h-1.5 bg-white/10 rounded-full" />
-                  </div>
-                  <div className="w-6 h-1.5 bg-indigo-500/40 rounded-full" />
-               </div>
-             ))}
+          {/* Status Box */}
+          <div className="space-y-2 relative z-10 flex flex-col gap-1 items-center bg-black/40 border border-white/5 rounded-lg p-2">
+             <div className="text-[10px] text-[#6366f1] font-bold uppercase tracking-widest">Status: Approved</div>
+             <div className="text-[8px] text-white/50 uppercase tracking-widest">Track: UI Components</div>
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1)_0%,transparent_80%)]" />
         </div>

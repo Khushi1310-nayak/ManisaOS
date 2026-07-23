@@ -85,8 +85,8 @@ export function Hero() {
               </Button>
             </a>
             <a 
-              href="#" 
-              onClick={(e) => e.preventDefault()}
+              href="/Manisa_Nayak_Resume_Main.pdf" 
+              download="Manisa_Nayak_Resume.pdf"
             >
               <Button variant="secondary">
                 Download Resume

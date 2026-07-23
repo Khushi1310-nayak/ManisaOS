@@ -3,7 +3,6 @@
 import { AchievementsHero } from "./AchievementsHero";
 import { FeaturedAchievements } from "./FeaturedAchievements";
 import { CertificatesGallery } from "./CertificatesGallery";
-import { JourneyTimeline } from "./JourneyTimeline";
 import { FutureGoals } from "./FutureGoals";
 import { AchievementsFooterStrip } from "./AchievementsFooterStrip";
 
@@ -15,12 +14,12 @@ export function AchievementsSection() {
       <div className="absolute bottom-[30%] left-[-10%] w-[60vw] h-[60vw] bg-[#3e5151] opacity-[0.04] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-20 md:gap-32 relative z-10">
+        {/* Existing Achievement Components */}
         <AchievementsHero />
         <FeaturedAchievements />
         <div className="-mt-10 md:-mt-16">
           <CertificatesGallery />
         </div>
-        <JourneyTimeline />
         <FutureGoals />
         <AchievementsFooterStrip />
       </div>
