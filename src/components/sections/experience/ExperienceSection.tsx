@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExperienceTimeline } from "./ExperienceTimeline";
 import { OpenSourceContributions } from "./OpenSourceContributions";
+import { ProjectAdminCard } from "./ProjectAdminCard";
 import { LiveGithubStats } from "../achievements/LiveGithubStats";
 
 export function ExperienceSection() {
@@ -36,6 +37,9 @@ export function ExperienceSection() {
         </motion.div>
 
         <ExperienceTimeline />
+        
+        {/* Project Admin Section */}
+        <ProjectAdminCard />
         
         {/* New Live Open Source Contributions Section */}
         <OpenSourceContributions />
