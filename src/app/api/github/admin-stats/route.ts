@@ -1,5 +1,14 @@
 import { NextResponse } from "next/server";
 
+interface GitHubIssue {
+  title: string;
+  html_url: string;
+  state: string;
+  user?: { login: string; avatar_url: string };
+  created_at: string;
+  pull_request?: { merged_at?: string };
+}
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -40,7 +49,7 @@ export async function GET(request: Request) {
     
     let totalPrs = 0;
     let mergedPrs = 0;
-    let prItems: any[] = [];
+    let prItems: GitHubIssue[] = [];
     if (prsRes.ok) {
       const data = await prsRes.json();
       totalPrs = data.total_count || 0;
@@ -54,7 +63,7 @@ export async function GET(request: Request) {
     
     let openIssues = 0;
     let closedIssues = 0;
-    let issueItems: any[] = [];
+    let issueItems: GitHubIssue[] = [];
     
     if (openIssuesRes.ok) {
       const data = await openIssuesRes.json();
