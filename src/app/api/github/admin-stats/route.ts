@@ -40,7 +40,12 @@ export async function GET(request: Request) {
     
     let totalPrs = 0;
     let mergedPrs = 0;
-    if (prsRes.ok) totalPrs = (await prsRes.json()).total_count || 0;
+    let prItems: any[] = [];
+    if (prsRes.ok) {
+      const data = await prsRes.json();
+      totalPrs = data.total_count || 0;
+      prItems = data.items || [];
+    }
     if (mergedPrsRes.ok) mergedPrs = (await mergedPrsRes.json()).total_count || 0;
 
     // Fetch open and closed issues
@@ -49,8 +54,18 @@ export async function GET(request: Request) {
     
     let openIssues = 0;
     let closedIssues = 0;
-    if (openIssuesRes.ok) openIssues = (await openIssuesRes.json()).total_count || 0;
-    if (closedIssuesRes.ok) closedIssues = (await closedIssuesRes.json()).total_count || 0;
+    let issueItems: any[] = [];
+    
+    if (openIssuesRes.ok) {
+      const data = await openIssuesRes.json();
+      openIssues = data.total_count || 0;
+      issueItems = [...issueItems, ...(data.items || [])];
+    }
+    if (closedIssuesRes.ok) {
+      const data = await closedIssuesRes.json();
+      closedIssues = data.total_count || 0;
+      issueItems = [...issueItems, ...(data.items || [])];
+    }
 
     // Fetch CI/CD runs
     const runsRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/runs?per_page=100`, fetchOpts);
@@ -70,11 +85,25 @@ export async function GET(request: Request) {
       contributors,
       prs: {
         total: totalPrs,
-        merged: mergedPrs
+        merged: mergedPrs,
+        items: prItems.map(pr => ({
+          title: pr.title,
+          html_url: pr.html_url,
+          state: pr.pull_request?.merged_at ? 'merged' : pr.state,
+          user: { login: pr.user?.login, avatar_url: pr.user?.avatar_url },
+          created_at: pr.created_at
+        }))
       },
       issues: {
         open: openIssues,
-        closed: closedIssues
+        closed: closedIssues,
+        items: issueItems.map(issue => ({
+          title: issue.title,
+          html_url: issue.html_url,
+          state: issue.state,
+          user: { login: issue.user?.login, avatar_url: issue.user?.avatar_url },
+          created_at: issue.created_at
+        }))
       },
       ci: {
         passed: testsPassed,
